@@ -16,7 +16,7 @@ class Solution {
            }
        } 
         
-        int[] result = new int[]{i+1, j+1};
-       return result;
+        
+       return  new int[]{i+1, j+1};
     }
 }
