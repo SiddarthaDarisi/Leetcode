@@ -1,34 +1,36 @@
 class MinStack {
-     Stack<Integer> s;
-     Stack<Integer> minans;
-
-    public MinStack() {
-        s = new Stack<>();
-        minans=new Stack<>();
-    }
-    
+    Node head;    
     public void push(int val) {
-        if(minans.isEmpty()|| val <= minans.peek()){
-            minans.push(val);
+        if(head == null){
+            head = new Node(val, val, null);
         }
-        s.push(val);
+        else{
+            head = new Node(val, Math.min(head.min, val) , head);
+        }
     }
     
     public void pop() {
-       if (!s.isEmpty()) {
-            if (s.peek().equals(minans.peek())) {
-                minans.pop();
-            }
-            s.pop();
-        }
+        head = head.next;
     }
     
     public int top() {
-       return s.peek();
+        return head.value;
     }
     
     public int getMin() {
-      return minans.isEmpty()?0:minans.peek();
+        return head.min;
+    }
+
+    class Node{
+        int value;
+        int min;
+        Node next;
+
+        private Node(int value, int min, Node next){
+            this.value = value;
+            this.min = min;
+            this.next = next;
+        }
     }
 }
 
