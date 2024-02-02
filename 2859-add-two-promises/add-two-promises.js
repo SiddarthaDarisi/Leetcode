@@ -6,7 +6,7 @@
 var addTwoPromises = async function(promise1, promise2) {
     try{
         const [value1,value2]=await Promise.all([promise1,promise2]);
-        return Promise.resolve(value1+value2);
+        return value1 + value2;
     }catch(err){
         console.err(err);
     }
