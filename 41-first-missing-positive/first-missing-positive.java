@@ -1,16 +1,16 @@
 class Solution {
     public int firstMissingPositive(int[] nums) {
         int n = nums.length;
-        boolean[] seen = new boolean[n + 1];
+        boolean[] check = new boolean[n + 1];
         
-        for (int num : nums) {
-            if (num > 0 && num <= n) {
-                seen[num] = true;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] > 0 && nums[i] <= n) {
+                check[nums[i]] = true;
             }
         }
         
         for (int i = 1; i <= n; i++) {
-            if (!seen[i]) {
+            if (!check[i]) {
                 return i;
             }
         }
