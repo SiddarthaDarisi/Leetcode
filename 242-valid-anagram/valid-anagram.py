@@ -1,18 +1,13 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        count = [0] * 26
-        
-        # Count the frequency of characters in string s
-        for x in s:
-            count[ord(x) - ord('a')] += 1
-        
-        # Decrement the frequency of characters in string t
-        for x in t:
-            count[ord(x) - ord('a')] -= 1
-        
-        # Check if any character has non-zero frequency
-        for val in count:
-            if val != 0:
-                return False
-        
-        return True
+        if len(s) != len(t):
+            return False
+
+        s_freq = {}
+        t_freq = {}
+        for char in s:
+            s_freq[char] = s_freq.get(char, 0) + 1
+        for char in t:
+            t_freq[char] = t_freq.get(char, 0) + 1
+
+        return s_freq == t_freq
