@@ -12,7 +12,6 @@ class Solution {
             }
           
         }
-        System.out.print(uniq);
         return uniq;
     }
 }
