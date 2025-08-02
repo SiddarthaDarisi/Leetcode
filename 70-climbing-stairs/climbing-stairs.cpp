@@ -1,18 +1,18 @@
 class Solution {
 public:
     int climbStairs(int n) {
-        if (n < 3) return n;  // Base cases
+        if (n <= 3) return n;
 
-        int first = 1;  // Ways to reach step 1
-        int second = 2; // Ways to reach step 2
-        int current;
+        int prev1 = 3;
+        int prev2 = 2;
+        int cur = 0;
 
-        for (int i = 3; i <= n; ++i) {
-            current = first + second;  // Ways to reach current step
-            first = second;            // Update for next iteration
-            second = current;
+        for (int i = 3; i < n; i++) {
+            cur = prev1 + prev2;
+            prev2 = prev1;
+            prev1 = cur;
         }
 
-        return second;
+        return cur;        
     }
 };
